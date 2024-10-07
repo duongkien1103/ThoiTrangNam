@@ -3,7 +3,7 @@
     include("db_connect.php");
 
     $so_san_pham_moi_trang = 15;
-    $page_hien_tai = isset($_POST['pagenum']) ? (int)$_POST['pagenum'] : 1;
+    $page_hien_tai = isset($_GET['pagenum']) ? (int)$_GET['pagenum'] : 1;
     $page_hien_tai = max($page_hien_tai, 1);
 
     $search = isset($_GET['search']) ? $_GET['search'] : '';

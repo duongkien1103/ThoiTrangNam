@@ -18,6 +18,9 @@
                 </div>
             </a>
             <div class="mid-header">
+                <?php
+                    $search = isset($_GET['search']) ? $_GET['search'] : '';
+                ?>
                 <div class="search-bar">
                     <form method="GET" action="">
                         <input type="text" name="search" class="search-input" placeholder="Tìm kiếm..." value="<?php echo isset($search) ? htmlspecialchars($search) : ''; ?>">
