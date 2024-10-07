@@ -7,19 +7,42 @@
     <link rel="stylesheet" href="../css/homeStyles.css">    
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div class="containers">
         <div class="header">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfOPtsh2YUNSNVRrSEK3pIKH1xgp7hm24ZOQ&s" alt="LOGO" class="left-header">
+            <a href="index.php">
+                <div class="left-header">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfOPtsh2YUNSNVRrSEK3pIKH1xgp7hm24ZOQ&s" alt="LOGO" class="left-header">
+                </div>
+            </a>
+            <div class="mid-header">
+                <div class="search-bar">
+                    <form method="GET" action="">
+                        <input type="text" name="search" class="search-input" placeholder="Tìm kiếm..." value="<?php echo isset($search) ? htmlspecialchars($search) : ''; ?>">
+                        <input type="hidden" name="page" value="products">
+                        <button type="submit" class="search-button">
+                            <img src="../../images/header/search.png" alt="SEARCH">
+                        </button>
+                    </form>
+                </div>               
+            </div>
             <div class="right-header">
-                <a href="#">
+                <a href="?page=cart">
                     <img src="../../images/header/cart.png" alt="CART">
                 </a>
                 <div class="user-icon">
                     <img src="../../images/header/user.png" alt="USER">
                 </div>
                 <div class="dropdown-content">
-                    <a href="login.php">Đăng nhập</a>
-                    <a href="register.php">Đăng ký</a>
+                    <?php if(isset($_SESSION['user'])): ?>
+                        <a href="?page=user_info">Thông tin người dùng</a>
+                        <a href="logout.php">Đăng xuất</a>
+                    <?php else: ?>
+                        <a href="login.php">Đăng nhập</a>
+                        <a href="register.php">Đăng ký</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -45,30 +68,38 @@
                 </a> 
             </nav>
             <div class="content">
-            <?php
-                if (isset($_GET['page'])) {
-                    $page = $_GET['page'];
-                    switch ($page) {
-                        case 'home':
-                            include 'home.php';
-                            break;
-                        case 'products':
-                            include 'products.php';
-                            break;
-                        case 'contact':
-                            include 'contact.php';
-                            break;
-                        default:
-                            echo '<h1>Trang không tồn tại</h1>';
-                            break;
+                <?php
+                    if (isset($_GET['page'])) {
+                        $page = $_GET['page'];
+                        switch ($page) {
+                            case 'home':
+                                include 'home.php';
+                                break;
+                            case 'products':
+                                include 'products.php';
+                                break;
+                            case 'contact':
+                                include 'contact.php';
+                                break;
+                            case 'user_info':
+                                include 'user_info.php';
+                                break;
+                            case 'product_info':
+                                include 'product_info.php';
+                                break;
+                            case 'cart':
+                                include 'cart.php';
+                                break;
+                            default:
+                                echo '<h1>Trang không tồn tại</h1>';
+                                break;
+                        }
+                    } else {
+                        include 'home.php';
                     }
-                } else {
-                    include 'home.php';
-                }
                 ?>
             </div>
             <div class="information">
-                <p>Thông tin bổ sung</p>
             </div>
         </div>
         <div class="footer">
@@ -86,6 +117,7 @@
                     <li>Hồ Anh Minh - 14/12/2003</li>
                 </ul>
             </div>
+        </div>
     </div>
 </body>
 </html>

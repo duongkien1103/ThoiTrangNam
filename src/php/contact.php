@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>Liên hệ</h1>
-    <p>Nội dung của trang liên hệ.</p>
+    <h1>HEHE</h1>
 </body>
 </html>

@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
+    <title>Trang giỏ hàng</title>
 </head>
 <body>
-    <h1>Trang chủ</h1>
-    <p>Nội dung của trang chủ.</p>
-
-    <div class>
-
-    </div>
+    <h1>Giỏ hàng đẹp vậy??</h1>
 </body>
 </html>
